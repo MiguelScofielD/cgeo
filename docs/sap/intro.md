@@ -25,17 +25,17 @@ Algumas das funcionalidades são:
 
 ## Dependências
 
-Para sua utilização é necessário que o [Serviço de Autenticação](../servauth/intro.md) esteja configurado e em execução.
+Para sua utilização é necessário que o [Serviço de Autenticação] esteja configurado e em execução.
 
 Devem estar instalados: [PostgreSQL com extensão PostGIS](https://www.postgresql.org/), [Node.JS](https://nodejs.org/en), [PM2](https://pm2.keymetrics.io/)
 
 ## Mais informações
 
-Para a criação de um projeto via SAP no QGIS, veja [Criação de um Projeto](./config_proj.md).
+Para a criação de um projeto via SAP no QGIS, veja [Criação de um Projeto].
 
-Para acesso ao cliente QGIS do usuário, veja [SAP Operador](./prod_tools.md).
+Para acesso ao cliente QGIS do usuário, veja [SAP Operador].
 
-Para acesso ao cliente QGIS do gerente, veja [SAP Gerente](./manager_tools.md).
+Para acesso ao cliente QGIS do gerente, veja [SAP Gerente].
 
 ## Tutorial
 
