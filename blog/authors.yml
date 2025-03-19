@@ -8,6 +8,17 @@ yangshun:
     x: yangshunz
     github: yangshun
 
+Antonio:
+  name: Antonio Santana
+  title: Engenheiro Cartógrafo
+  url: https://github.com/MiguelScofilD
+  image_url: https://github.com/MiguelScofielD.png
+  page: true
+  socials:
+    x: MiguelScofielD
+    github: MiguelScofielD
+
+
 slorber:
   name: Sébastien Lorber
   title: Docusaurus maintainer

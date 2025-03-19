@@ -1,0 +1,8 @@
+{
+  "label": "Tileserver-gl",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Manual para Disponibilização de Imagens via TileServer"
+  }
+}

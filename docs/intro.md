@@ -2,46 +2,140 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introdução
 
-Let's discover **Docusaurus in less than 5 minutes**.
+A Cia Prod Geoinfo possui 3 serviços hospedados no servidor da DGEO:
 
-## Getting Started
+- **SAP** 
 
-Get started by **creating a new site**.
+  Sistema de Apoio a Produção utilizado para controle de atividades dos operadores na Cia Prod Geoinfo.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- **Tileserver-gl**
 
-### What you'll need
+  Serviço para hospedar as imagens utilizados como insumos para a aquisição vetorial. As imagens são distribuídas via WMS dentro do SAP, dessa forma, o operador não precisa baixar a imagem para o seu computador.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- **Serviço de Autenticação**
 
-## Generate a new site
+  Serviço de Autenticação usado pelo SAP.
 
-Generate a new Docusaurus site using the **classic template**.
+## Como Reiniciar os serviços
 
-The classic template will automatically be added to your project after you run the command:
+No caso de queda de Energia, é necessário reiniciar os serviços na seguinte ordem:
+
+1 - Serviço de Autenticação
+
+2 - SAP
+
+3- Tileserver-gl
+
+Os dois primeiros estão no contêiner 804(SAP) e podem ser acessados via **proxmox**.
+
+#### 1. Acesse o Proxmox Web GUI
+
+Primeiro, abra o navegador e acesse a interface web do Proxmox, geralmente no endereço https://`<IP_do_Proxmox>`
+:8006.
+
+#### 2. Faça login
+
+Digite o nome de usuário e a senha para acessar o sistema Proxmox.
+
+#### 3. Selecione o nó do Proxmox
+
+Após o login, no painel da esquerda, você verá os nós do seu cluster Proxmox. Selecione o nó onde o contêiner está localizado.
+
+#### 4. Acesse os contêineres
+
+No painel esquerdo, clique na opção "CTs" (contêineres). Isso exibirá todos os contêineres disponíveis nesse nó.
+
+#### 5. Inicie o contêiner
+
+  - Selecione o contêiner que deseja iniciar.
+  - No topo da interface, clique no botão "Start" (Iniciar).
+
+O contêiner agora deve ser iniciado e você poderá acessá-lo.
+
+#### 6. Acessando o contêiner via console
+
+Se desejar acessar o terminal do contêiner após ele ser iniciado:
+
+ - No painel do contêiner, clique na opção "Console".
+
+ - Isso abrirá um terminal diretamente dentro do contêiner, permitindo que você interaja com ele.
+
+
+## No terminal
+
+Dentro do terminal, navegue até a pasta **servico_autenticacao**, conforme a seguir:
 
 ```bash
-npm init docusaurus@latest my-website classic
+login:root
+senha:4******t
+
+```
+```bash
+#Entre na pasta
+cd servico_autenticacao
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
+Dentro da pasta **servico_autenticacao**, execute o código abaixo para iniciar o serviço:
 
 ```bash
-cd my-website
 npm run start
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Para verificar se o serviço está funcionando entre em http://10.79.8.62:3013/. Caso o serviço tenha sido iniciado corretamente será aberto a página do serviço de autenticação.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+Em caso de erro verifique via pm2 no prompt:
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+
+```bash
+pm2 list
+```
+
+
+## Reiniciar o SAP
+
+Após iniciar o serviço de autenticação deve-se iniciar o SAP. Retorne para home e depois vá para a pasta sap:
+
+```bash
+cd ..
+cd sap2/sap
+```
+Após isso, execute:
+
+```bash
+npm run start
+```
+O comando `cd` altera o diretório com o qual você está trabalhando.
+
+O comando `npm run start` constrói o seu site no IP `10.79.8.62` e na porta `3010`, pronto para você visualizar em http://10.79.8.62:3010/.
+
+## Reiniciar o Tileserver-gl
+
+Diferente dos outros serviços, o tileserver-gl não está no contêiner **804**. Ele está em uma máquina virtual **402**.
+
+Ligue a máquina virtual via **proxmox**, entre com as credencias de acesso e abra o **prompt**.
+
+No prompt será pedido novamente o login e senha:
+
+```bash
+login:root
+senha:G3*****@
+```
+Após isso, execute o comando:
+
+```bash
+sudo su
+```
+O comando `sudo` permite que usuários com permissões adequadas executem comandos com privilégios de superusuário (root).
+
+Feito isso, basta iniciar o sistema usando o comando tileserver-gl:
+
+```bash
+tileserver-gl
+```
+O serviço será iniciado e pode ser acessado em http://10.79.8.63:8080/.
+
+
+
+
