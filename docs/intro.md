@@ -39,6 +39,11 @@ Primeiro, abra o navegador e acesse a interface web do Proxmox, geralmente no en
 
 Digite o nome de usuário e a senha para acessar o sistema Proxmox.
 
+
+|<img src = {require('./img/login.png').default} style = {{width:800}} />|
+|:--:|
+| *Login* |
+
 #### 3. Selecione o nó do Proxmox
 
 Após o login, no painel da esquerda, você verá os nós do seu cluster Proxmox. Selecione o nó onde o contêiner está localizado.
@@ -47,10 +52,19 @@ Após o login, no painel da esquerda, você verá os nós do seu cluster Proxmox
 
 No painel esquerdo, clique na opção "CTs" (contêineres). Isso exibirá todos os contêineres disponíveis nesse nó.
 
+|<img src = {require('./img/no.png').default} style = {{width:800}} />|
+|:--:|
+| *Nó* |
+
 #### 5. Inicie o contêiner
 
   - Selecione o contêiner que deseja iniciar.
   - No topo da interface, clique no botão "Start" (Iniciar).
+
+
+|<img src = {require('./img/start.png').default} style = {{width:800}} />|
+|:--:|
+| *Nó* |
 
 O contêiner agora deve ser iniciado e você poderá acessá-lo.
 
@@ -61,6 +75,11 @@ Se desejar acessar o terminal do contêiner após ele ser iniciado:
  - No painel do contêiner, clique na opção "Console".
 
  - Isso abrirá um terminal diretamente dentro do contêiner, permitindo que você interaja com ele.
+
+
+|<img src = {require('./img/console.png').default} style = {{width:800}} />|
+|:--:|
+| *Nó* |
 
 
 ## No terminal
@@ -95,13 +114,16 @@ pm2 list
 
 ## Reiniciar o SAP
 
-Após iniciar o serviço de autenticação deve-se iniciar o SAP. Retorne para home e depois vá para a pasta sap:
+Após iniciar o serviço de autenticação deve-se iniciar o SAP. Retorne para a pasta *home* e depois vá para a pasta *sap*:
 
 ```bash
 cd ..
+```
+```bash
 cd sap2/sap
 ```
-Após isso, execute:
+
+Após isso, dentro da pasta *sap* execute:
 
 ```bash
 npm run start
@@ -116,6 +138,16 @@ Diferente dos outros serviços, o tileserver-gl não está no contêiner **804**
 
 Ligue a máquina virtual via **proxmox**, entre com as credencias de acesso e abra o **prompt**.
 
+|<img src = {require('./img/tileserve.png').default} style = {{width:1000}} />|
+|:--:|
+| *proxmox* |
+
+|<img src = {require('./img/login_tileserve.png').default} style = {{width:1000}} />|
+|:--:|
+| *Login Máquina Virtual* |
+
+Entre com as credenciais.
+
 No prompt será pedido novamente o login e senha:
 
 ```bash
@@ -125,9 +157,10 @@ senha:G3*****@
 Após isso, execute o comando:
 
 ```bash
-sudo su
+su root
 ```
-O comando `sudo` permite que usuários com permissões adequadas executem comandos com privilégios de superusuário (root).
+O comando `su` permite que usuários com permissões adequadas executem comandos com privilégios de superusuário (root).
+**Será pedido novamente a senha**
 
 Feito isso, basta iniciar o sistema usando o comando tileserver-gl:
 

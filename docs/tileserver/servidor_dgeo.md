@@ -8,6 +8,10 @@ title: 'Procedimentos no Servidor'
 
 1. Após gerado o MBTile, entrar na pasta da rede onde o serviço encontra-se hospedado. Para isso, acesse a pasta usando o **WinSCP** que é um software de código aberto que permite transferir arquivos entre um computador com Windows e um servidor remoto usando protocolos como SFTP (SSH File Transfer Protocol), SCP (Secure Copy Protocol), FTP e WebDAV.
 
+|<img src = {require('./img/winSCP.png').default} style = {{width:1000}} />|
+|:--:|
+| *Tela Inicial WinSCP* |
+
     A conexão deve ser feita no  `IP: 10.79.8.63`. Acesse com login e senha:
     ```bash
     login:root
@@ -21,18 +25,53 @@ title: 'Procedimentos no Servidor'
     * Atualizar o campo data com os insumos a serem utilizados. Este campo deverá ser preenchido da seguinte maneira (valores dentro de parênteses deverão ser modificados com as informações sugeridas no seu interior):
 
 ```
-"data": {
- "(nome a ser dado para a camada)": {
- "mbtiles": "(nome do arquivo com a extensão .mbtiles)"
- }
-// Inserir mais insumos de acordo com a necessidade, repetindo-se as três linhas acima.
-}
-"sources": {
- "{nome do insumo. Pode ser o mesmo nome da camada}": {
- "url": "mbtiles://(nome do arquivo com a extensão .mbtiles)",
- "type": "(vector ou raster, dependendo do insumo utilizado)"
- }
-// Inserir mais insumos de acordo com a necessidade, repetindo-se as quatro linhas acima.
+{
+  "options": {
+    "paths": {
+      "root": "/root"
+    }
+  },
+  "data": {
+    "0413-3-SO": {
+      "mbtiles": "0413-3-SO.mbtiles"
+    },
+    "0434-2": {
+      "mbtiles": "0434-2.mbtiles"
+    },
+    "0434-1": {
+      "mbtiles": "0434-1.mbtiles"
+    },
+    "0642-2": {
+      "mbtiles": "0642-2.mbtiles"
+    }
+
+  },
+  "sources": {
+    "0413-3-SO": {
+      "url": "mbtiles://0413-3-SO.mbtiles",
+      "type": "raster",
+      "minzoom": 0,
+      "maxzoom": 19
+    },
+    "0434-2": {
+      "url": "mbtiles://0435-1.mbtiles",
+      "type": "raster",
+      "minzoom": 0,
+      "maxzoom": 18
+    },
+    "0434-1": {
+      "url": "mbtiles://0435-1.mbtiles",
+      "type": "raster",
+      "minzoom": 0,
+      "maxzoom": 18
+    },
+    "0642-2": {
+      "url": "mbtiles://0642-2.mbtiles",
+      "type": "raster",
+      "minzoom": 0,
+      "maxzoom": 18
+    }
+  }
 }
 ```
 
