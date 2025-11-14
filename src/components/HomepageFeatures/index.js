@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 
 const FeatureList = [
   {
     
-    title: 'Servidor',
+    title: '',
     Svg: require('@site/static/img/servidor.svg').default,
     description: (
       
@@ -13,28 +14,34 @@ const FeatureList = [
         Tutorial para reiniciar os serviços da Cia Prod Geoinfo hospedados no servidor.
       </>
     ),
+    link: '/docs/category/tileserver-gl',
+    buttonText: 'SERVIDOR',
   },
   {
-    title: 'SAP',
+    title: '',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
         Sistema de Apoio a Produção.
       </>
     ),
+    link: '/docs/category/sap',
+    buttonText: 'SAP',
   },
   {
-    title: 'FME',
+    title: '',
     Svg: require('@site/static/img/fme.svg').default,
     description: (
       <>
         Feature Manipulation Engine
       </>
     ),
+    link: '/docs/category/fme',
+    buttonText: 'FME',
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Svg, title, description,link, buttonText}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -42,7 +49,14 @@ function Feature({Svg, title, description}) {
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        {link && (
+          <Link className="button button--primary button--sm" to={link}>
+            {buttonText}
+          </Link>
+        )}
+
+        <p className={styles.featureDescription}>{description}</p>
+        
       </div>
     </div>
   );

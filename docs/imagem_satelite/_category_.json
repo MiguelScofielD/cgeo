@@ -1,0 +1,8 @@
+{
+  "label": "CBERS",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Aquisição, preparo e uso de imagens CBERS"
+  }
+}

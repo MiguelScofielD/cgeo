@@ -9,3 +9,8 @@
   height: 200px;
   width: 200px;
 }
+
+.featureDescription {
+  margin-top: 15px; /* dá espaço entre botão e texto */
+}
+

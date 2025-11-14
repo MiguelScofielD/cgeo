@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 description: ''
 title: 'Arquivo MBTile'
 ---
@@ -39,6 +39,7 @@ Para que o arquivo gerado seja visualizado, é necessário que este esteja no EP
 </div>
 
 ## Procedimento no FME
+
 
 1. Carregar os .geotiff renderizados
 2. Realizar a mosaicagem dos arquivos pelo **RasterMosaicker**
