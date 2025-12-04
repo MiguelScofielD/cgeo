@@ -1,88 +1,44 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Translate your site
+# Criar banco de dados Postgis
+ 
+A criação do banco postgis deve ser feita a partir da modelagem disponível no Github da DSG:
 
-Let's translate `docs/intro.md` to French.
+[modelagem carta orto](https://github.com/dsgoficial/modelagens/tree/master/edgv_300_orto/2_5)
 
-## Configure i18n
+[modelagem carta topo](https://github.com/dsgoficial/modelagens/tree/master/edgv_300_topo/1_4)
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
+Após baixar os arquivos `edgv_300_orto_25.sql`, `edgv_300_orto_extension_25` crie um banco vazio no PgAdmin com o nome padrão:
 
-```js title="docusaurus.config.js"
-export default {
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-  },
-};
 ```
+Aquisição: pit_ano_escala_EPSG_edgv30tipo
+Edição: pit_ano_escala_EPSG_edgv30tipo_edicao
 
-## Translate a doc
+Exemplos: 
 
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
+pit_2026_50k_4674_edgv30orto
+pit_2026_50k_4674_edgv30orto_edicao
 
-```bash
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
-
-cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
 ```
+Após criar o banco de Aquisição, abra uma `Query tool` e preencha com as informações do arquivo `edgv_300_orto_25.sql`, execute, e logo depois, uma nova `query tool` 
+e preencha com o arquivo `edgv_300_orto_extension_25`:
 
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
+![PgAdmin](./img/pgadmin.png)
 
-## Start your localized site
+![PgAdmin2](./img/create.png)
 
-Start your site on the French locale:
+Feito isso, abra uma `query tool` pressionando o botão direito do mouse no banco criado:
 
-```bash
-npm run start -- --locale fr
-```
+![query](./img/query.png)
 
-Your localized site is accessible at [http://localhost:3000/fr/](http://localhost:3000/fr/) and the `Getting Started` page is translated.
+![query](./img/query_tool.png)
 
-:::caution
+É possível arrastar o arquivo .sql para o PgAdmin:
 
-In development, you can only use one locale at a time.
+![query](./img/arrastar.png)
 
-:::
 
-## Add a Locale Dropdown
+Daí, execute pressionando a tecla `F5`, em seguida, carregue outra query com o outro arquivo .sql e execute novamente.
 
-To navigate seamlessly across languages, add a locale dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'localeDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The locale dropdown now appears in your navbar:
-
-![Locale Dropdown](./img/localeDropdown.png)
-
-## Build your localized site
-
-Build your site for a specific locale:
-
-```bash
-npm run build -- --locale fr
-```
-
-Or build your site to include all the locales at once:
-
-```bash
-npm run build
-```

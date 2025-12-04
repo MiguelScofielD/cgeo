@@ -1,55 +1,48 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
+
 ---
 
-# Manage Docs Versions
+# Reprojetar banco aquisição para banco edição
+Para realizar a etapa de Edição é necessário reprojetar o banco de aquisição para UTM.
 
-Docusaurus can manage multiple versions of your docs.
+## Reprojeção
 
-## Create a docs version
+Abra o **FME** e selecione os bancos de aquisição e edição conforme o workflow a seguir:
 
-Release a version 1.0 of your project:
+![worflow](./img/reprojetar.png)
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+Na lateral direita, acesse em **Navigator** os parâmetros de conexão dos bancos:
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
+![Navigator](./img/navigator.png)
 
-Your docs now have 2 versions:
+Selecione o banco de aquisição e pressione o botão direito do mouse para editar a conexão:
 
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
+![Conexão](./img/edit_connection.png)
 
-## Add a Version Dropdown
+Será aberta uma aba com os parâmetros de conexão: `HOST`, `Port`, `Database`, `Username`, `Password`.
 
-To navigate seamlessly across versions, add a version dropdown.
+No exemplo abaixo o `Host` inserido foi localhost pois o banco utilizado estava hospedado localmente e não no servidor. 
 
-Modify the `docusaurus.config.js` file:
+No caso em que for usado o servidor, deve-se usar o `Host:10.x.x.x` e `Port:5432`:
 
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
 
-The docs version dropdown appears in your navbar:
+![Conexão](./img/edit.png)
 
-![Docs Version Dropdown](./img/docsVersionDropdown.png)
+Após isso, selecione o banco de edição e pressione o botão direito do mouse para editar a conexão:
 
-## Update an existing version
+![Conexão](./img/edicao_connection.png)
 
-It is possible to edit versioned docs in their respective folder:
+Proceda de forma análoga ao banco de aquisição e configure os parâmetros do banco de edição:
 
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+![Conexão](./img/edicao.png)
+
+Antes de realizar o worflow, garanta que o EPSG do banco de edição esteja configurado corretamente:
+
+![Conexão](./img/dynamic.png) ![Conexão](./img/ferramentas.png)
+
+Será aberta o aba a seguir:
+
+![Conexão](./img/ferramentas2.png)
+
+Finalizado isso, basta rodar o workflow para reprojetar o banco de dados.

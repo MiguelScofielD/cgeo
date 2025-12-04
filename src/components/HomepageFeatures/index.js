@@ -36,8 +36,8 @@ const FeatureList = [
         Feature Manipulation Engine
       </>
     ),
-    link: '/docs/category/fme',
-    buttonText: 'FME',
+    link: '/docs/category/Disseminação',
+    buttonText: 'Disseminação',
   },
 ];
 
