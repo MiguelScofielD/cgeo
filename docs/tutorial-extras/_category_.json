@@ -2,6 +2,7 @@
   "label": "Disseminação",
   "position": 3,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "slug": "disseminacao"
   }
 }

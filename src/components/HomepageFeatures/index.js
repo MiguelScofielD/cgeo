@@ -36,7 +36,7 @@ const FeatureList = [
         Feature Manipulation Engine
       </>
     ),
-    link: '/docs/category/Disseminação',
+    link: '/docs/disseminacao',
     buttonText: 'Disseminação',
   },
 ];
