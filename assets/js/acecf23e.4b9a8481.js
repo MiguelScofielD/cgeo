@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcgeo=self.webpackChunkcgeo||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/cgeo/blog","blogTitle":"Blog","authorsListPath":"/cgeo/blog/authors"}')}}]);
